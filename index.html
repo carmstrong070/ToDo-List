@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo List</title>
+    <meta name="description" 
+          content="Create a todo list for free">
+    <link rel="stylesheet" href="css/site.css">
+    
+    <link rel="stylesheet" 
+        href="node_modules/js-datepicker/dist/datepicker.min.css">
+    
+</head>
+<body>
+    <header>
+        <h1>Create your ToDo List</h1>
+    </header>
+    <div id="create-item">
+        <label for="title">Title: </label>
+        <input id="title" type="text">
+        <span>*</span>
+        <br>
+
+        <label for="description">Description: </label>
+        <textarea id="description" rows="8" cols="25"></textarea>
+        <span></span>
+        <br>
+
+        <label for="start-date">Start Date: </label>
+        <input id="start-date" class="due-date" type="text">
+        <span></span>
+        <br>
+
+        <label for="end-date">End Date: </label>
+        <input id="end-date" class="due-date" type="text">
+        <span></span>
+        <br>
+
+        <label for="is-complete">Is Complete?</label>
+        <input type="checkbox" id="is-complete">
+        <br>
+
+        <label>Choose an urgency:</label>
+        <select id="urgency">
+            <option value="L">Low</option>
+            <option value="M">Medium</option>
+            <option value="H">High</option>
+        </select>
+        <br>
+
+        <button type="button">Add ToDo Item</button>
+
+    </div>
+
+    <script src="node_modules/js-datepicker/dist/datepicker.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script>
+        const picker = datepicker(".due-date");
+    </script>
+</body>
+</html>
