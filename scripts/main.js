@@ -3,9 +3,12 @@ var ToDoItem = (function () {
     }
     return ToDoItem;
 }());
+var itemKey = "todo";
 window.onload = function () {
     var addBtn = document.querySelector("#create-item > button");
     addBtn.onclick = processNewItem;
+    var readItemBtn = document.querySelector("#read-item > button");
+    readItemBtn.onclick = readItem;
 };
 function processNewItem() {
     var item = getItemFromForm();
@@ -29,7 +32,7 @@ function saveItem(item) {
     console.log("Converting todoitem into JSON string....");
     console.log(data);
     if (typeof (Storage) != "undefined") {
-        localStorage.setItem("todo", data);
+        localStorage.setItem(itemKey, data);
     }
 }
 function getItemFromForm() {
@@ -47,4 +50,8 @@ function getItemFromForm() {
     var urgencyElem = document.getElementById("urgency");
     item.urgency = urgencyElem.options[urgencyElem.selectedIndex].text;
     return item;
+}
+function readItem() {
+    var item = JSON.parse(localStorage.getItem(itemKey));
+    alert(item.title + "\n" + item.description);
 }

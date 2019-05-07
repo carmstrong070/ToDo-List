@@ -21,15 +21,14 @@ if(testItem.isComplete){
 }
 */
 
-//When Add Item is clicked
-    //Get data off the page and wrap in ToDo object
-    //Notify user and clear form
-    //Save ToDo object
+const itemKey:string = "todo";
 
 window.onload = function(){
-    let addBtn = <HTMLButtonElement>
-        document.querySelector("#create-item > button");
+    let addBtn = <HTMLButtonElement> document.querySelector("#create-item > button");
     addBtn.onclick = processNewItem;
+
+    let readItemBtn = <HTMLButtonElement> document.querySelector("#read-item > button");
+    readItemBtn.onclick = readItem;
 }
 
 function processNewItem(){
@@ -57,6 +56,10 @@ function notifyUser(){
     alert("Your item was saved.");
 }
 
+/**
+ *  Saves item to local storage
+ * @param item ToDoItem retrieved from form
+ */
 function saveItem(item:ToDoItem):void{
 
     let data:string = JSON.stringify(item);
@@ -65,7 +68,7 @@ function saveItem(item:ToDoItem):void{
 
     //ensure user can use localStorage
     if(typeof(Storage) != "undefined"){
-        localStorage.setItem("todo", data);
+        localStorage.setItem(itemKey, data);
     }
 }
 
@@ -96,4 +99,12 @@ function getItemFromForm():ToDoItem{
     item.urgency = urgencyElem.options[urgencyElem.selectedIndex].text;
 
     return item;
+}
+
+function readItem(){
+    // get item from local storage
+    let item:ToDoItem = JSON.parse(localStorage.getItem(itemKey));
+
+    // display item
+    alert(item.title + "\n" + item.description);
 }
