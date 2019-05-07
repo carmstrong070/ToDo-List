@@ -39,6 +39,24 @@ function processNewItem(){
     clearForm();
 }
 
+function clearForm(){
+    // Clear all textboxes
+    let textElements = document.querySelectorAll("input[type=text], textarea");
+    textElements.forEach(element => {
+        (<HTMLInputElement>element).value = "";
+    });
+
+    // Clear checkbox
+    (<HTMLInputElement>document.querySelector("#is-complete")).checked = false;
+
+    //Reset urgency
+    (<HTMLSelectElement>document.querySelector("#urgency")).selectedIndex = 0;
+}
+
+function notifyUser(){
+    alert("Your item was saved.");
+}
+
 function saveItem(item:ToDoItem):void{
 
     let data:string = JSON.stringify(item);
