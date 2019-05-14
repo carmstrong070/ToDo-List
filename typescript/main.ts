@@ -21,14 +21,30 @@ if(testItem.isComplete){
 }
 */
 
-const itemKey:string = "todo";
+//When Add Item is clicked
+    //Get data off the page and wrap in ToDo object
+    //Notify user and clear form
+    //Save ToDo object
 
 window.onload = function(){
-    let addBtn = <HTMLButtonElement> document.querySelector("#create-item > button");
+    let addBtn = <HTMLButtonElement>
+        document.querySelector("#create-item > button");
     addBtn.onclick = processNewItem;
 
-    let readItemBtn = <HTMLButtonElement> document.querySelector("#read-item > button");
+    let readItemBtn = <HTMLElement>
+        document.querySelector("#read-item > button");
     readItemBtn.onclick = readItem;
+}
+
+const itemKey:string = "todo";
+
+function readItem(){
+    //get item from storage
+    let item:ToDoItem = 
+        JSON.parse(localStorage.getItem(itemKey));
+
+    alert(item.title);
+    alert(item.description);
 }
 
 function processNewItem(){
@@ -36,34 +52,59 @@ function processNewItem(){
     saveItem(item);
     notifyUser();
     clearForm();
+    displayToDo(item);
+}
+
+function displayToDo(item:ToDoItem){
+    let todoList =
+        document.getElementById("todo-list");
+    let itemPar = document.createElement("p");
+    itemPar.innerText = item.title;
+    itemPar.setAttribute("data-desc"
+                    , item.description);
+    itemPar.onclick = toggleItemComplete;
+
+    todoList.appendChild(itemPar);
+}
+
+function toggleItemComplete(){
+    let currItem:HTMLElement = this;
+    currItem.classList.toggle("completed");
+    let title = currItem.innerText;
+    let desc = currItem.getAttribute("data-desc");
+    alert("You completed " + title + ":" + desc);
 }
 
 function clearForm(){
-    // Clear all textboxes
-    let textElements = document.querySelectorAll("input[type=text], textarea");
-    textElements.forEach(element => {
-        (<HTMLInputElement>element).value = "";
-    });
+    //We could alternatively, wrap all inputs in
+    //a <form> and reset the form
 
-    // Clear checkbox
-    (<HTMLInputElement>document.querySelector("#is-complete")).checked = false;
+    //clear all textboxes and textarea
+    let textElements =
+        document.querySelectorAll("input[type=text], textarea");
+    for(let i = 0; i < textElements.length; i++){
+        (<HTMLInputElement>textElements[i]).value = "";
+    }
 
-    //Reset urgency
-    (<HTMLSelectElement>document.querySelector("#urgency")).selectedIndex = 0;
+    //uncheck is complete
+    let isCompleteBox = <HTMLInputElement>
+                document.querySelector("#is-complete");
+    isCompleteBox.checked = false;
+
+    //reset select list
+    let urgencyList = <HTMLSelectElement>
+        document.querySelector("#urgency");
+    urgencyList.selectedIndex = 0;
 }
 
 function notifyUser(){
-    alert("Your item was saved.");
+    alert("Your item was saved");
 }
 
-/**
- *  Saves item to local storage
- * @param item ToDoItem retrieved from form
- */
 function saveItem(item:ToDoItem):void{
 
     let data:string = JSON.stringify(item);
-    console.log("Converting todoitem into JSON string....");
+    console.log("Converting todoitem into JSON string...");
     console.log(data);
 
     //ensure user can use localStorage
@@ -99,12 +140,4 @@ function getItemFromForm():ToDoItem{
     item.urgency = urgencyElem.options[urgencyElem.selectedIndex].text;
 
     return item;
-}
-
-function readItem(){
-    // get item from local storage
-    let item:ToDoItem = JSON.parse(localStorage.getItem(itemKey));
-
-    // display item
-    alert(item.title + "\n" + item.description);
 }

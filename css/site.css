@@ -1,0 +1,13 @@
+div#todo-list > p, p.completed{
+    background-color: green;
+    color: white;
+    padding: .5em;
+    border-radius: .2em;
+    display: inline-block;
+    margin-right: .75em;
+}
+
+p.completed{
+    text-decoration: line-through;
+    background-color: lightgreen !important;
+}
