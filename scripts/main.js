@@ -29,13 +29,13 @@ function displayToDo(item) {
     itemPar.setAttribute("data-desc", item.description);
     itemPar.onclick = toggleItemComplete;
     todoList.appendChild(itemPar);
+    todoList.appendChild(document.createElement("br"));
 }
 function toggleItemComplete() {
     var currItem = this;
     currItem.classList.toggle("completed");
     var title = currItem.innerText;
     var desc = currItem.getAttribute("data-desc");
-    alert("You completed " + title + ":" + desc);
 }
 function clearForm() {
     var textElements = document.querySelectorAll("input[type=text], textarea");

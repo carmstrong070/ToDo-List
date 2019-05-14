@@ -63,8 +63,8 @@ function displayToDo(item:ToDoItem){
     itemPar.setAttribute("data-desc"
                     , item.description);
     itemPar.onclick = toggleItemComplete;
-
     todoList.appendChild(itemPar);
+    todoList.appendChild(document.createElement("br"));
 }
 
 function toggleItemComplete(){
@@ -72,7 +72,7 @@ function toggleItemComplete(){
     currItem.classList.toggle("completed");
     let title = currItem.innerText;
     let desc = currItem.getAttribute("data-desc");
-    alert("You completed " + title + ":" + desc);
+    /*alert("You completed " + title + ":" + desc);*/
 }
 
 function clearForm(){

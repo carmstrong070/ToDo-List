@@ -17,7 +17,8 @@
     <header>
         <h1>Create your ToDo List</h1>
     </header>
-    <div id="create-item">
+    <div id="create-item" class="fieldset">
+        <h1><span>Add New Item</span></h1>
         <label for="title">Title: </label>
         <input id="title" type="text">
         <span>*</span>
@@ -42,22 +43,19 @@
         <input type="checkbox" id="is-complete">
         <br>
 
-        <label>Choose an urgency:</label>
+        <label>Urgency:</label>
         <select id="urgency">
             <option value="L">Low</option>
             <option value="M">Medium</option>
             <option value="H">High</option>
         </select>
         <br>
-
+    
         <button type="button">Add ToDo Item</button>
-
-    </div>
-    <div id="read-item">
-        <button type="button">Read Item</button>
     </div>
 
     <div id="todo-list">
+        <h2>Todo List:</h2>
     </div>
 
     <script src="node_modules/js-datepicker/dist/datepicker.min.js"></script>
