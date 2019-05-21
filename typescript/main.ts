@@ -50,19 +50,19 @@ function readItem(){
 function processNewItem(){
     let item:ToDoItem = getItemFromForm();
     saveItem(item);
-    notifyUser();
+    //notifyUser();
     clearForm();
     displayToDo(item);
 }
 
 function displayToDo(item:ToDoItem){
-    let todoList =
-        document.getElementById("todo-list");
+    let todoList = document.getElementById("todo-list");
     let itemPar = document.createElement("p");
+
     itemPar.innerText = item.title;
-    itemPar.setAttribute("data-desc"
-                    , item.description);
+    itemPar.setAttribute("data-desc", item.description);
     itemPar.onclick = toggleItemComplete;
+
     todoList.appendChild(itemPar);
     todoList.appendChild(document.createElement("br"));
 }
@@ -70,6 +70,16 @@ function displayToDo(item:ToDoItem){
 function toggleItemComplete(){
     let currItem:HTMLElement = this;
     currItem.classList.toggle("completed");
+    let compList = document.getElementById("completed-list");
+    let todoList = document.getElementById("todo-list");
+
+    if(compList.contains(currItem)){
+        todoList.appendChild(currItem);
+    }
+    else{
+        compList.appendChild(currItem);
+    }
+    
     let title = currItem.innerText;
     let desc = currItem.getAttribute("data-desc");
     /*alert("You completed " + title + ":" + desc);*/

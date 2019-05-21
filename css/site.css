@@ -76,3 +76,8 @@ textarea{
     top: 0.5em;
   }
 /* end fieldset border */
+
+.list-boxes{
+  display: flex;
+  flex-direction: row;
+}

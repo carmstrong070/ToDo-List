@@ -18,7 +18,6 @@ function readItem() {
 function processNewItem() {
     var item = getItemFromForm();
     saveItem(item);
-    notifyUser();
     clearForm();
     displayToDo(item);
 }
@@ -34,6 +33,14 @@ function displayToDo(item) {
 function toggleItemComplete() {
     var currItem = this;
     currItem.classList.toggle("completed");
+    var compList = document.getElementById("completed-list");
+    var todoList = document.getElementById("todo-list");
+    if (compList.contains(currItem)) {
+        todoList.appendChild(currItem);
+    }
+    else {
+        compList.appendChild(currItem);
+    }
     var title = currItem.innerText;
     var desc = currItem.getAttribute("data-desc");
 }
