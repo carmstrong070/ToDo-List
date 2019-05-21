@@ -17,51 +17,58 @@
     <header>
         <h1>Create your ToDo List</h1>
     </header>
-    <div id="create-item" class="fieldset">
-        <h1><span>Add New Item</span></h1>
-        <label for="title">Title: </label>
-        <input id="title" type="text">
-        <span>*</span>
-        <br>
+    <div id="main-area">
+        <div id="create-item" class="fieldset">
+            <h1><span>Add New Item</span></h1>
+            <label for="title">Title: </label>
+            <input id="title" type="text">
+            <span>*</span>
+            <br>
 
-        <label for="description">Description: </label>
-        <textarea id="description" rows="8" cols="25"></textarea>
-        <span></span>
-        <br>
+            <label for="description">Description: </label>
+            <textarea id="description" rows="8" cols="25"></textarea>
+            <span></span>
+            <br>
 
-        <label for="start-date">Start Date: </label>
-        <input id="start-date" class="due-date" type="text">
-        <span></span>
-        <br>
+            <label for="start-date">Start Date: </label>
+            <input id="start-date" class="due-date" type="text">
+            <span></span>
+            <br>
 
-        <label for="end-date">End Date: </label>
-        <input id="end-date" class="due-date2" type="text">
-        <span></span>
-        <br>
+            <label for="end-date">End Date: </label>
+            <input id="end-date" class="due-date2" type="text">
+            <span></span>
+            <br>
 
-        <label for="is-complete">Is Complete?</label>
-        <input type="checkbox" id="is-complete">
-        <br>
+            <label for="is-complete">Is Complete?</label>
+            <input type="checkbox" id="is-complete">
+            <br>
 
-        <label>Urgency:</label>
-        <select id="urgency">
-            <option value="L">Low</option>
-            <option value="M">Medium</option>
-            <option value="H">High</option>
-        </select>
-        <br>
-    
-        <button type="button">Add ToDo Item</button>
+            <label>Urgency:</label>
+            <select id="urgency">
+                <option value="L">Low</option>
+                <option value="M">Medium</option>
+                <option value="H">High</option>
+            </select>
+            <br>
+        
+            <button type="button">Add ToDo Item</button>
+        </div>
+        <div id="item-details">
+            <h2 id="section-title">Item Details:</h2>
+            <h3 id="item-title"></h3>
+            <p id="item-desc"></p>
+        </div>
     </div>
+    <div id="list-area">
+        <div id="todo-list" class="list-boxes">
+            <h2>Todo List:</h2>
+        </div>
 
-    <div id="todo-list" class="list-boxes">
-        <h2>Todo List:</h2>
+        <div id="completed-list" class="list-boxes">
+            <h2>Completed Items:</h2>
+        </div>
     </div>
-
-    <div id="completed-list" class="list-boxes">
-        <h2>Completed Items:</h2>
-    </div>
-
     <script src="node_modules/js-datepicker/dist/datepicker.min.js"></script>
     <script src="scripts/main.js"></script>
     <script>

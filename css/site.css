@@ -77,7 +77,33 @@ textarea{
   }
 /* end fieldset border */
 
-.list-boxes{
-  display: flex;
-  flex-direction: row;
+#main-area{
+    display: flex;
+    justify-content: space-around;
+}
+#list-area{
+    display: flex;
+    justify-content: space-around;
+}
+
+#item-details{
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid black;
+    width: 30%;
+}
+
+#item-title{
+    background-color: green;
+    color: white;
+    padding: .5em;
+    border-radius: .2em;
+    display: inline-block;
+    margin-right: .75em;
+    width: ;
+    text-align: center;
+}
+
+#item-desc{
+
 }

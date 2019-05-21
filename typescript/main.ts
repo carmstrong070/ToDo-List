@@ -61,10 +61,20 @@ function displayToDo(item:ToDoItem){
 
     itemPar.innerText = item.title;
     itemPar.setAttribute("data-desc", item.description);
-    itemPar.onclick = toggleItemComplete;
+    itemPar.ondblclick = toggleItemComplete;
+    itemPar.onclick = showItemDetails;
 
     todoList.appendChild(itemPar);
     todoList.appendChild(document.createElement("br"));
+}
+
+function showItemDetails(){
+    let currItem:HTMLElement = this;
+    let itemTitle = document.getElementById("item-title");
+    let itemDesc = document.getElementById("item-desc");
+
+    itemTitle.innerText = currItem.innerText;
+    itemDesc.innerText = currItem.getAttribute("data-desc");
 }
 
 function toggleItemComplete(){

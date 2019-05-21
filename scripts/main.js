@@ -26,9 +26,17 @@ function displayToDo(item) {
     var itemPar = document.createElement("p");
     itemPar.innerText = item.title;
     itemPar.setAttribute("data-desc", item.description);
-    itemPar.onclick = toggleItemComplete;
+    itemPar.ondblclick = toggleItemComplete;
+    itemPar.onclick = showItemDetails;
     todoList.appendChild(itemPar);
     todoList.appendChild(document.createElement("br"));
+}
+function showItemDetails() {
+    var currItem = this;
+    var itemTitle = document.getElementById("item-title");
+    var itemDesc = document.getElementById("item-desc");
+    itemTitle.innerText = currItem.innerText;
+    itemDesc.innerText = currItem.getAttribute("data-desc");
 }
 function toggleItemComplete() {
     var currItem = this;
